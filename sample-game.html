@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function OnclickButton1(){
+            // document.getElementById("bullet_area1").innerHTML="<marquee direction=\"right\" scrollamout=\"100\"><img src=\"F:Task/JVSC/bullet1.png\" width=\"20px\" height=\"20px\"></marquee>"
+            var enemy_life= document.getElementById("shooter2_life").value
+            if(enemy_life-5 != 0)
+            {
+                document.getElementById("shooter2_life").value = enemy_life - 5
+            }
+            else{
+                document.getElementById("shooter2_life").value = 1
+                alert("Player 1 won this round\nPlease retart the game")
+                document.getElementById("player1_score").value=parseInt(document.getElementById("player1_score").value)+1;
+                if(document.getElementById("player1_score").value>=3){
+                    document.write("Player 1 won the tournament")
+                }
+            }
+        }
+        function OnclickButton2(){
+            // document.getElementById("bullet_area2").innerHTML="<img src=\"F:Task/JVSC/bullet2.png\" width=\"20px\" height=\"20px\">"
+            var enemy_life= document.getElementById("shooter1_life").value
+            if(enemy_life-5 != 0)
+            {
+                document.getElementById("shooter1_life").value = enemy_life - 5
+            }
+            else{
+                document.getElementById("shooter1_life").value = 1
+                alert("Player 2 won this game \nPlease restart the game")
+                document.getElementById("player2_score").value=parseInt(document.getElementById("player2_score").value)+1;
+                if(document.getElementById("player2_score").value>=3){
+                    document.write("Player 2 won the tournament")
+                }
+            }
+        }
+        function StartGame(){
+            document.getElementById("Shooting_Start1").style.display="block"
+            document.getElementById("Shooting_Start2").style.display="block"
+            document.getElementById("Restart_Game").style.display="block"
+        }
+        
+        function RestartGame(){
+            document.getElementById("shooter1_life").value = 100
+            document.getElementById("shooter2_life").value = 100
+        }
+
+    </script>
+    <style>
+        #first{
+            position: fixed;
+            left: 150px; 
+            right: 100px; 
+            bottom: 50px;
+            top: 320px;
+
+        }
+        #second{
+            position: fixed;
+            left: 950px; 
+            right: 250px; 
+            bottom: 50px;
+            top: 320px;
+
+        }
+        #result{
+            text-align: center; 
+            width: 200px; 
+            height: 100px;
+            margin-top: 50px;
+            margin-left: 500px;
+        }
+        .score{
+            
+        }
+    </style>
+</head>
+<body style="content:'';position: fixed;display: block;width: 100%;height: 100%;background:url('F:/Task/JVSC/war2.jpg') ;">
+    
+    <div id="result" >
+        <button onclick="StartGame()">Start Game</button><br>
+        <label>Player 1</label>
+        <input type="text" value="0" class="score" id="player1_score" onchange="saveValue(this)"><br>
+        <label>Player 2</label>
+        <input type="text" value="0" class="score" id="player2_score" onchange="saveValue(this)">
+        <p id="Restart_Game" style="display: none;">
+            <button onclick="RestartGame()">Restart</button>
+        </p>
+        
+
+    </div>
+    
+        <div id="first">
+            <meter id="shooter1_life" value="100" min="0" max="100">100</meter><br>
+            <img src="F:Task/JVSC/shooter1.png" height="200px" width="200px" ><br>
+            <p id="Shooting_Start1" style="display: none;">
+                <button onclick="OnclickButton1()">Shoot</button>
+            </p>
+        </div>
+        <!-- <div name="bullet_area1" id="bullet_area1" style="position: relative;left: 330px; right: 100px; bottom: 500px;top: 218px;" ></div>
+        <div name="bullet_area2" id="bullet_area2" style="position: relative;left: 962px; right: 180px; bottom: 500px;top: 218px;" ></div> -->
+        <div id="second">
+            <meter id="shooter2_life" value="100" min="0" max="100">100</meter><br>
+            <img src="F:Task/JVSC/shooter2.png" height="200px" width="200px" ><br>
+            <p id="Shooting_Start2" style="display: none;">
+                <button onclick="OnclickButton2()">Shoot</button>
+            </p>
+            
+        </div>
+    
+
+</body>
+</html>
